@@ -1,0 +1,3 @@
+1. tener la carpeta de formulariophp en la carpeta de htdocs de xampp
+2. crear la base de datos ingresando al archivo crear_tabla.php y tambien creara una tabla con el nombre de usuarios (http://localhost/formulariophp2/crear_tabla.php)
+3. luego ingresa a la carpeta de formulariophp2 y abre el archivo index.php
