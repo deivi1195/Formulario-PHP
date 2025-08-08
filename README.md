@@ -1,6 +1,6 @@
 # Formulario PHP 
 
-Tiene registro de usuarios, inicio de sesión, panel de control, validaciones de formulario, base de datos MySQL.
+Mi proyecto de formulario PHP simple
 
 ## Requisitos Previos
 
@@ -20,4 +20,5 @@ http://localhost//NOMBREDELACARPETA/index.php
 - este proyecto lo cree sin una estructura de carpetas por el momento aunque tengo pensado crear una estructura MVC
 - los campos del formulario de registro tienes las validaciones que me solicitaron
 - tiene pagina de registro, login y una pagina de inicio despues del hacer login
+- le agrege una imagen de fondo para que se viera mejor
 
