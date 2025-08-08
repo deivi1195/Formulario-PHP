@@ -17,8 +17,7 @@ if (ini_get("session.use_cookies")) {
 // Finalmente, destruir la sesión
 session_destroy();
 
-// Redirigir al inicio de sesión con un mensaje de éxito
-$_SESSION['cierre_sesion'] = 'Has cerrado sesión correctamente.';
-header('Location: inicio.php');
+// Redirigir al login
+header('Location: login.php');
 exit();
 ?>

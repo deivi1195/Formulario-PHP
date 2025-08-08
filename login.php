@@ -57,17 +57,58 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             error_log('Error en login.php: ' . $error->getMessage());
         }
     }
-    
-    // Si hay errores, guardarlos en la sesión
-    if (!empty($errores)) {
-        $_SESSION['error_login'] = implode('<br>', $errores);
-        header('Location: inicio.php');
-        exit();
-    }
-} else {
-    // Si se accede directamente al archivo sin enviar el formulario
-    header('Location: inicio.php');
-    exit();
 }
 ?>
-<link rel="stylesheet" href="styles.css">
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar Sesión</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="contenedor">
+        <div class="contenedor-formulario">
+            <h2>Iniciar Sesión</h2>
+            
+            <?php 
+            // Mostrar mensaje de éxito de registro si existe
+            if (isset($_SESSION['registro_exitoso'])) {
+                echo '<div class="exito">' . htmlspecialchars($_SESSION['registro_exitoso']) . '</div>';
+                unset($_SESSION['registro_exitoso']);
+            }
+            
+            // Mostrar errores si existen
+            if (!empty($errores)): ?>
+                <div class="error">
+                    <ul>
+                        <?php foreach ($errores as $error): ?>
+                            <li><?php echo htmlspecialchars($error); ?></li>
+                        <?php endforeach; ?>
+                    </ul>
+                </div>
+            <?php endif; ?>
+            
+            <form action="login.php" method="POST">
+                <div class="grupo-formulario">
+                    <label for="correo">Correo electrónico:</label>
+                    <input type="email" id="correo" name="correo" required 
+                           value="<?php echo htmlspecialchars($correo); ?>">
+                </div>
+                
+                <div class="grupo-formulario">
+                    <label for="contrasena">Contraseña:</label>
+                    <input type="password" id="contrasena" name="contrasena" required>
+                </div>
+                
+                <div class="grupo-formulario">
+                    <button type="submit">Iniciar Sesión</button>
+                </div>
+            </form>
+            
+            <p>¿No tienes una cuenta? <a href="registro.php">Regístrate aquí</a></p>
+        </div>
+    </div>
+</body>
+</html>

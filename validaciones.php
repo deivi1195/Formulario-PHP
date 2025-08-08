@@ -7,9 +7,9 @@ function validarTexto($texto) {
     return preg_match('/^[A-Za-zÁÉÍÓÚáéíóúñÑ\s]+$/', $texto);
 }
 
-// Función para validar cédula (8 dígitos)
+// Función para validar cédula (7 u 8 dígitos)
 function validarCedula($cedula) {
-    return preg_match('/^\d{8}$/', $cedula);
+    return preg_match('/^\d{7,8}$/', $cedula);
 }
 
 // Función para validar correo electrónico
@@ -48,7 +48,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     
     // Validar cédula
     if (empty($cedula) || !validarCedula($cedula)) {
-        $errores[] = 'La cédula debe tener exactamente 8 dígitos';
+        $errores[] = 'La cédula debe tener 7 u 8 dígitos';
     }
     
     // Validar fecha de nacimiento
@@ -115,7 +115,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 
                 // Redirigir con mensaje de éxito
                 $_SESSION['registro_exitoso'] = '¡Registro exitoso! Ahora puedes iniciar sesión.';
-                header('Location: inicio.php');
+                header('Location: login.php');
                 exit();
             }
             

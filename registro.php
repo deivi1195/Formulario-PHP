@@ -50,13 +50,25 @@ unset($_SESSION['datos_formulario']);
                 <div class="grupo-formulario">
                     <label for="nombre">Nombre:</label>
                     <input type="text" id="nombre" name="nombre" required 
+                           oninput="this.value = this.value.replace(/[^A-Za-zÁÉÍÓÚáéíóúñÑ\s]/g, '');"
+                           onkeypress="return (event.charCode >= 65 && event.charCode <= 90) || 
+                                      (event.charCode >= 97 && event.charCode <= 122) || 
+                                      (event.charCode === 32) ||
+                                      (event.charCode >= 192 && event.charCode <= 255)"
                            value="<?php echo htmlspecialchars($datos_formulario['nombre']); ?>">
+                    <div class="requisitos">Solo letras y espacios</div>
                 </div>
                 
                 <div class="grupo-formulario">
                     <label for="apellido">Apellido:</label>
                     <input type="text" id="apellido" name="apellido" required
+                           oninput="this.value = this.value.replace(/[^A-Za-zÁÉÍÓÚáéíóúñÑ\s]/g, '');"
+                           onkeypress="return (event.charCode >= 65 && event.charCode <= 90) || 
+                                      (event.charCode >= 97 && event.charCode <= 122) || 
+                                      (event.charCode === 32) ||
+                                      (event.charCode >= 192 && event.charCode <= 255)"
                            value="<?php echo htmlspecialchars($datos_formulario['apellido']); ?>">
+                    <div class="requisitos">Solo letras y espacios</div>
                 </div>
                 
                 <div class="grupo-formulario">
@@ -65,7 +77,7 @@ unset($_SESSION['datos_formulario']);
                            oninput="this.value = this.value.replace(/[^0-9]/g, '');"
                            onkeypress="return event.charCode >= 48 && event.charCode <= 57"
                            value="<?php echo htmlspecialchars($datos_formulario['cedula']); ?>">
-                    <div class="requisitos">Solo números, sin puntos ni guiones.</div>
+                    <div class="requisitos">Solo números (7 u 8 dígitos), sin puntos ni guiones.</div>
                 </div>
                 
                 <div class="grupo-formulario">
@@ -101,7 +113,7 @@ unset($_SESSION['datos_formulario']);
                 </div>
             </form>
             
-            <p class="texto-centrado">¿Ya tienes una cuenta? <a href="inicio.php">Inicia sesión aquí</a></p>
+            <p class="texto-centrado">¿Ya tienes una cuenta? <a href="login.php">Inicia sesión aquí</a></p>
         </div>
     </div>
 
